@@ -1,50 +1,48 @@
 import types from "../actions/types";
 
 const INITIAL_STATE = {
-  profile: {},
-  isLoggedIn: false,
+  viewType: "mine",
   isLoading: false,
-  token: null,
+  foundServers: [],
+  ownServers: [],
   errorMessage: ""
 }
 
 export default function session(state=INITIAL_STATE, action) {
   switch (action.type) {
-    case types.LOGIN:
+    case types.GET_OWN_SERVERS:
       return {
+        viewType: "mine",
         isLoading: true
       }
-    case types.LOGIN_SUCCESS:
+    case types.GET_OWN_SERVERS_SUCCESS:
       return {
         ...state,
-        isLoggedIn: true,
         isLoading: false,
         token: action.token
       }
-    case types.LOGIN_FAIL:
+    case types.GET_OWN_SERVERS_FAIL:
       return {
         ...state,
-        isLoggedIn: false,
         isLoading: false,
-        errorMessage: action.errorMessage
+        errorMessage: action.error.message
       }
-    case types.REGISTER:
+    case types.FIND_SERVERS:
       return {
-        isLoading: true
+        isLoading: true,
+        viewType: "search"
       }
-    case types.REGISTER_SUCCESS:
-      return {
-        ...state,
-        isLoggedIn: true,
-        isLoading: false,
-        token: action.token
-      }
-    case types.REGISTER_FAIL:
+    case types.FIND_SERVERS_SUCCESS:
       return {
         ...state,
-        isLoggedIn: false,
         isLoading: false,
-        errorMessage: action.errorMessage
+        servers: action.servers
+      }
+    case types.FIND_SERVERS_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: action.error.message
       }
     default:
       return state;

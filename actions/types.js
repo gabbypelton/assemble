@@ -5,7 +5,9 @@
 const syncTypes = [];
 const asyncTypes = [
 	"LOGIN",
-	"REGISTER"
+	"REGISTER",
+	"GET_OWN_SERVERS",
+	"FIND_SERVERS"
 ];
 const typesObject = {};
 

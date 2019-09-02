@@ -84,19 +84,6 @@ class AuthScreen extends Component {
                     )
               }
             </TouchableOpacity>
-            {
-              this.props.isLoggedIn ?
-                (
-                  <Text>
-                    You are logged in!
-                  </Text>
-                )
-              : (
-                  <Text>
-                    {this.props.errorMessage}
-                  </Text>
-                )
-            }
           </View>
         </View>
       </View>

@@ -15,6 +15,8 @@ import {
 
 import { MonoText } from "../components/StyledText";
 import { loginUser } from "../actions/session";
+import SearchBar from "../components/SearchBar";
+import Servers from "../components/Servers";
 
 class HomeScreen extends Component {
   handleChange(name, value) {
@@ -27,7 +29,8 @@ class HomeScreen extends Component {
     return (
       <View style={styles.container}>
         <Text>home home home home</Text>
-        <Channels />
+        <SearchBar />
+        <Servers />
       </View>
     );
   }
