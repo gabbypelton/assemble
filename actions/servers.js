@@ -20,11 +20,10 @@ export const getOwnServers = () => async dispatch => {
 
 export const findServers = (query) => async dispatch => {
 	dispatch({ type: types.FIND_SERVERS });
-	const request = { email, username, password }
 	try {
 		const token = await AsyncStorage.getItem("authToken");
-		const request = { token, query };
-		const response = await axios.post("/servers/find", request);
+		const request = { token, query, queryType: "name" };
+		const response = await axios.post("/servers/search", request);
 		if (!response) {
 			dispatch({ type: types.FIND_SERVERS_FAIL });
 			return;

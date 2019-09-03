@@ -19,7 +19,7 @@ const SearchBar = props => {
 	}
 	return (
 		<TextInput
-			onTextChange={(value) => findServers(value)}
+			onChangeText={(value) => findServers(value)}
 		/>	
 	)
 };

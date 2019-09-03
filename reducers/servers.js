@@ -19,7 +19,6 @@ export default function session(state=INITIAL_STATE, action) {
       return {
         ...state,
         isLoading: false,
-        token: action.token
       }
     case types.GET_OWN_SERVERS_FAIL:
       return {
@@ -36,7 +35,7 @@ export default function session(state=INITIAL_STATE, action) {
       return {
         ...state,
         isLoading: false,
-        servers: action.servers
+        foundServers: action.servers
       }
     case types.FIND_SERVERS_FAIL:
       return {
