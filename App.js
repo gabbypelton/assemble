@@ -13,8 +13,21 @@ import { Ionicons } from '@expo/vector-icons';
 import AppNavigator from './navigation/AppNavigator';
 import { rootReducer } from "./reducers";
 
+let baseURL;
+if (process.env.NODE_ENV === "development") {
+  if (Platform.OS === "android") {
+    baseURL = "http://10.0.2.2:5000/api"
+  } else {
+    baseURL = "http://localhost:5000/api"
+  }
+} else {
+  baseURL = process.env.API_URL;
+}
+
+console.log({baseURL});
+
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
-axios.defaults.baseURL = "http://10.0.2.2:5000/api";
+axios.defaults.baseURL = baseURL;
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);

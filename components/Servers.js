@@ -4,6 +4,7 @@ import {
 	Text,
 	View
 } from "react-native";
+import moment from "moment";
 import { connect } from "react-redux";
 import { getOwnServers } from "../actions/servers";
 
@@ -25,15 +26,7 @@ class Servers extends Component {
 				<View>
 				{
 					ownServers.map(server => {
-						return (
-							<View
-								id={server._id}
-							>
-								<Text>
-									{server.name}
-								</Text>
-							</View>
-						)
+						return <Server server={server} key={server._id} />
 					})
 				}
 				</View>
@@ -43,15 +36,7 @@ class Servers extends Component {
 				<View>
 				{
 					foundServers.map(server => {
-						return (
-							<View
-								id={server._id}
-							>
-								<Text>
-									{server.name}
-								</Text>
-							</View>
-						)
+						return <Server server={server} key={server._id} />
 					})
 				}
 				</View>
@@ -66,6 +51,24 @@ class Servers extends Component {
 			)
 		}
 	}
+}
+
+const Server = props => {
+	return (
+	<View
+		key={props.server._id}
+	>
+		<Text>
+			{props.server.name}
+		</Text>
+		<Text>
+			{props.server.description}
+		</Text>
+		<Text>
+			created on {moment(props.server.createdOn).format()}
+		</Text>
+	</View>
+)
 }
 
 const mapStateToProps = state => {
