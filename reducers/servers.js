@@ -13,12 +13,13 @@ export default function session(state=INITIAL_STATE, action) {
     case types.GET_OWN_SERVERS:
       return {
         viewType: "mine",
-        isLoading: true
+        isLoading: true,
       }
     case types.GET_OWN_SERVERS_SUCCESS:
       return {
         ...state,
         isLoading: false,
+        ownServers: action.servers
       }
     case types.GET_OWN_SERVERS_FAIL:
       return {

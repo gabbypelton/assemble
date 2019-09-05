@@ -20,6 +20,7 @@ const SearchBar = props => {
 	return (
 		<TextInput
 			onChangeText={(value) => findServers(value)}
+			autoCapitalize="none"
 		/>	
 	)
 };
